@@ -8,8 +8,8 @@ This project is created for ITU ECE Senior Design Project
 
 # Project Members
 
-## 040120074 Ismailcan Ozbek
-###Data Collection, Mobile Implementation
+- **040120074 Ismailcan Ozbek**
+  - Data Collection, Mobile Implementation
 
 ## 040110213 Aytac Aydin
 ### Image Processing
