@@ -1,12 +1,27 @@
-Drowsy Driver Detection for Motor Vehicles
+# Drowsy Driver Detection for Motor Vehicles
 
-ITU ECE Senior Design Project under the supervision of
+This project is created for ITU ECE Senior Design Project
 
-Asst. Professor Onur Ferhanoglu
+# Project Supervisor
 
-by
+* Assistant Professor Onur Ferhanoglu
 
-040120074 Ismailcan Ozbek
-040110213 Aytac Aydin
-040140003 Burak Mert Gonultas
-040120062 Onur Yilmaz
+# Project Members
+
+- **040120074 Ismailcan Ozbek**
+  - Data Collection
+  - Mobile Implementation
+
+- **040110213 Aytac Aydin**
+  - Image Processing
+
+- **040140003 Burak Mert Gonultas**
+  - Image Processing
+  - Deep Learning
+
+- **040120062 Onur Yilmaz**
+  - Mobile Implementation
+
+# Special Thanks to
+
+- Associate Professor Hazim Kemal Ekenel
