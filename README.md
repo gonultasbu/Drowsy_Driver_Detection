@@ -25,3 +25,10 @@ This project is created for ITU ECE Senior Design Project
 # Special Thanks to
 
 - Associate Professor Hazim Kemal Ekenel
+
+#Current Backlog
+
+- Access live webcam with openCV.
+- NHTU dataset is required
+- More data is required, especially night recordings
+- The project has been forked, an Android implementation (diagonal recording) + embedded Linux implementation (front-face)
