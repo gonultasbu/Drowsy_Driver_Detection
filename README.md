@@ -26,7 +26,7 @@ This project is created for ITU ECE Senior Design Project
 
 - Associate Professor Hazim Kemal Ekenel
 
-#Current Backlog
+# Current Backlog
 
 - Access live webcam with openCV.
 - NHTU dataset is required
