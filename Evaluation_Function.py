@@ -33,7 +33,7 @@ for i in range(0, len(datasetData)):
     elif datasetData[i] == '1' and processedData[i] == '0':
         FalseNegativeCounter += 1
     else 
-        'INVALID DATA EXISTS IN THE OUTPUT FILE(S), PLEASE CHECK'
+        print 'INVALID DATA EXISTS IN THE OUTPUT FILE(S), PLEASE CHECK'
 
 
 print 'TP = ' + TruePositiveCounter '\n'
