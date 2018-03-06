@@ -38,14 +38,10 @@ for i in range(0, len(datasetData)):
 
 print 'TRUE POSITIVE'
 print TruePositiveCounter
-
 print 'TRUE NEGATIVE'
 print TrueNegativeCounter
-
-
 print 'FALSE POSITIVE'
 print FalsePositiveCounter
-
 print 'FALSE NEGATIVE'
 print FalseNegativeCounter
 
