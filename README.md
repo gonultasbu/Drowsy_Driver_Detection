@@ -32,4 +32,5 @@ This project is created for ITU ECE Senior Design Project
 - Code needs to be rewritten in C++ for Android development.
 - More data is required, especially night recordings.
 - The project has been forked, an Android implementation (diagonal recording) + embedded Linux implementation (front-face).
+- Apparently, the "perfect" dataset uses a different measure than eyes. Need to work on that.
 
