@@ -30,7 +30,6 @@ This project is created for ITU ECE Senior Design Project
 # Current Backlog
 
 - Code needs to be rewritten in C++ for Android development.
-- Evaluation function is going to be written by Burak Mert Gonultas.
 - More data is required, especially night recordings.
 - The project has been forked, an Android implementation (diagonal recording) + embedded Linux implementation (front-face).
 
