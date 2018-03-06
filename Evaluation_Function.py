@@ -36,11 +36,11 @@ for i in range(0, len(datasetData)):
         print 'INVALID DATA EXISTS IN THE OUTPUT FILE(S), PLEASE CHECK'
 
 
-print 'TP = ' + TruePositiveCounter '\n'
-print 'TN = ' + TrueNegativeCounter '\n'
-print 'FP = ' + FalsePositiveCounter '\n'
-print 'FN = ' + FalseNegativeCounter '\n'
-print 'TPR = ' TruePositiveCounter/(TrueNegativeCounter+FalseNegativeCounter+FalsePositiveCounter)
+print 'TP = ' + TruePositiveCounter + '\n'
+print 'TN = ' + TrueNegativeCounter + '\n'
+print 'FP = ' + FalsePositiveCounter + '\n'
+print 'FN = ' + FalseNegativeCounter + '\n'
+print 'TPR = ' TruePositiveCounter/(TrueNegativeCounter+FalseNegativeCounter+FalsePositiveCounter) #TRUE POSITIVE RATE
 
 
 datasetFile.close()
