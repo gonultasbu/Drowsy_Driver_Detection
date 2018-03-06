@@ -40,6 +40,7 @@ print 'TP = ' + TruePositiveCounter '\n'
 print 'TN = ' + TrueNegativeCounter '\n'
 print 'FP = ' + FalsePositiveCounter '\n'
 print 'FN = ' + FalseNegativeCounter '\n'
+print 'TPR = ' TruePositiveCounter/(TrueNegativeCounter+FalseNegativeCounter+FalsePositiveCounter)
 
 
 datasetFile.close()
