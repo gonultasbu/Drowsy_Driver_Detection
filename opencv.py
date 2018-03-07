@@ -11,7 +11,7 @@ inputName = '001_nonSleepy'
 txtFile = open(inputName+'.txt', 'a')
 
 #fourcc = cv2.VideoWriter_fourcc(*'MJPG')
-#out = cv2.VideoWriter(fileName+'_output.avi', fourcc, 30.0, (640, 360))
+#out = cv2.VideoWriter(fileName+'_output.avi', fourcc, 30.0, (640, 480))
 
 # play sound
 #FREQ = 2500
