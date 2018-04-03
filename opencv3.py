@@ -5,7 +5,7 @@ import dlib
 
 # load cascades
 detector = dlib.get_frontal_face_detector()
-shape_predictor = dlib.shape_predictor('C:\\Python27\\Lib\\site-packages\\dlib\\shape_predictor_68_face_landmarks.dat')
+shape_predictor = dlib.shape_predictor('C:\\Users\Mert\\AppData\\Local\\Programs\\Python\\Python36\\Lib\\site-packages\\dlib\\shape_predictor_68_face_landmarks.dat')
 
 inputName = '001_nonSleepy'
 txtFile = open(inputName+'.txt', 'a')
@@ -50,7 +50,7 @@ while cap.isOpened():
            landmarks = np.matrix([[p.x, p.y] for p in detected_landmarks])  # extract landmark coordinates
 
            leftH = ((landmarks[47][0, 1] - landmarks[43][0, 1]) + (landmarks[46][0, 1] - landmarks[44][0, 1]))   # left eye height
-           leftW = (landmarks[45][0, 0] - landmarks[42][0, 0])   # left eye width 
+           leftW = (landmarks[45][0, 0] - landmarks[42][0, 0])   # left eye width
            leftEAR = float(leftH) / (2 * leftW)   # left eye aspect ratio
 
            rightH = ((landmarks[41][0, 1] - landmarks[37][0, 1]) + (landmarks[40][0, 1] - landmarks[38][0, 1]))   # right eye height
