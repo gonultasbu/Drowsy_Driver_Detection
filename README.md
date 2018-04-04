@@ -34,5 +34,4 @@ This project is created for ITU ECE Senior Design Project
 - More data is required, especially night recordings.
 - The project has been forked, an Android implementation (diagonal recording) + embedded Linux implementation (front-face).
 - Apparently, the "perfect" dataset uses a different measure than eyes. Need to work on that.
-- Further discussion&research is required for deep learning implementation.
-
+- Data needs to be extracted and labeled for CNN.
