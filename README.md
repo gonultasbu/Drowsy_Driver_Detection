@@ -35,3 +35,4 @@ This project is created for ITU ECE Senior Design Project
 - The project has been forked, an Android implementation (diagonal recording) + embedded Linux implementation (front-face).
 - Apparently, the "perfect" dataset uses a different measure than eyes. Need to work on that.
 - Data needs to be extracted and labeled for CNN.
+- Extract data method needs to embedded in the deep learning based solution.
