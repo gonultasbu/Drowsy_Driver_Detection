@@ -35,17 +35,24 @@ while cap.isOpened():
         faces = detector(grayFrame, 0)
 
         if len(faces) != 0: # face found
+            maxArea = 0
            faceCounter = 0
            # dlib_rect = dlib.rectangle(int(x), int(y), int(x + w), int(y + h))
+           # find the maximum face area to remove additional faces
            for k, d in enumerate(faces):
-               # convert dlib rectangle object to opencv coordinates
-               x = d.left()
-               y = d.top()
-               w = d.right() - x
-               h = d.bottom() - y
+                faceArea = (d.right() - d.left())*(d.bottom() - d.top())
+                if faceArea > maxArea:
+                       maxArea = faceArea
+                       # convert dlib rectangle object to opencv coordinates
+                       x = d.left()
+                       y = d.top()
+                       w = d.right() - x
+                       h = d.bottom() - y
+                       maxRect = d             
+               
 
-               frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 1) # put rectangle around face
-               detected_landmarks = shape_predictor(frame, d).parts()  # detect landmarks
+           frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 1) # put rectangle around face
+           detected_landmarks = shape_predictor(frame, maxRect).parts()  # detect landmarks
 
            landmarks = np.matrix([[p.x, p.y] for p in detected_landmarks])  # extract landmark coordinates
 
