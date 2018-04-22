@@ -14,7 +14,7 @@ void gen_file(ifstream& input_file_param, ofstream& output_file_param){
         }
 
         getline(input_file_param,stop);
-        stop.pop_back(); //Get rid of the newline character, remove on DOS while compiling
+        //stop.pop_back(); //Get rid of the newline character, remove on DOS while compiling
 
         for(c=stoi(start);c<=stoi(stop);c++){ //generate the ones
             output_file_param<<"1";

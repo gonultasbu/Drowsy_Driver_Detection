@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/bmg/Documents/GitHub/Drowsy_Driver_Detection/Match_Labels/main.cpp" "/Users/bmg/Documents/GitHub/Drowsy_Driver_Detection/Match_Labels/cmake-build-debug/CMakeFiles/Match_Labels.dir/main.cpp.o"
+  "C:/Users/Mert/Documents/GitHub/Drowsy_Driver_Detection/Match_Labels/main.cpp" "C:/Users/Mert/Documents/GitHub/Drowsy_Driver_Detection/Match_Labels/cmake-build-debug/CMakeFiles/Match_Labels.dir/main.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
