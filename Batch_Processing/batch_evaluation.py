@@ -1,7 +1,3 @@
-import numpy as np
-
-#MAYBE TAKE FILE NAMES AS INPUT?
-
 
 def eval_func(dataset_file,processed_file):
 
@@ -61,4 +57,4 @@ def eval_func(dataset_file,processed_file):
     quit()
 
 
-eval_func('True_Evaluation.txt','Processed_Evaluation.txt')
+#eval_func('True_Evaluation.txt','Processed_Evaluation.txt')

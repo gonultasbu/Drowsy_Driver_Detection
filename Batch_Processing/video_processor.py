@@ -164,4 +164,4 @@ def process_video(input_file):
     cap.release()
     cv2.destroyAllWindows()
 
-process_video("C:\\Users\\Mert\\Dropbox\\ITU\\2017 BITIRME\\DATASETS\\BIG_DATASET\\Training_Evaluation_Dataset\\Training Dataset\\008\\noglasses\\slowBlinkWithNodding (1).avi")
+#process_video("C:\\Users\\Mert\\Dropbox\\ITU\\2017 BITIRME\\DATASETS\\BIG_DATASET\\Training_Evaluation_Dataset\\Training Dataset\\008\\noglasses\\slowBlinkWithNodding (1).avi")
