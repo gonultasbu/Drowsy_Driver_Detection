@@ -1,11 +1,12 @@
+# -- coding: utf-8 --
 import os
 
 def eval_func(dataset_file,processed_file):
-    
+
     try: #IF CANNOT READ THE FILE, PRINT ERROR
         datasetFile = open(dataset_file,'r')
         processedFile = open(processed_file,'r')
-        main_path = os.path.dirname(dataset_file)
+        main_path= os.path.dirname(dataset_file)
     except IOError:
         print ('CANNOT OPEN ONE OR MANY FILES')
         quit()
@@ -18,9 +19,9 @@ def eval_func(dataset_file,processed_file):
     FalsePositiveCounter = 0
     FalseNegativeCounter = 0
 
-    if len(datasetData) != len(processedData):
-        print ('FILE LENGTHS DO NOT MATCH, QUITTING!')
-        quit()
+    #if len(datasetData) != len(processedData):
+    #    print ('FILE LENGTHS DO NOT MATCH, QUITTING!')
+    #    quit()
 
 
     for i in range(0, len(datasetData)):
@@ -56,6 +57,7 @@ def eval_func(dataset_file,processed_file):
     output_file.write("\nFALSE POSITIVE = " + str(FalsePositiveCounter) )
     output_file.write("\nFALSE NEGATIVE = " + str(FalseNegativeCounter) )
     output_file.close()
+    print(output_file)
     quit()
 
 
