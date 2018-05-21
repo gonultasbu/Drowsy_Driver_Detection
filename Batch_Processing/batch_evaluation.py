@@ -1,9 +1,10 @@
 
 def eval_func(dataset_file,processed_file):
-
+    
     try: #IF CANNOT READ THE FILE, PRINT ERROR
         datasetFile = open(dataset_file,'r')
         processedFile = open(processed_file,'r')
+        main_path = os.path.dirname(dataset_file)
     except IOError:
         print ('CANNOT OPEN ONE OR MANY FILES')
         quit()
@@ -48,7 +49,7 @@ def eval_func(dataset_file,processed_file):
 
     datasetFile.close()
     processedFile.close()
-    output_file = open(processed_file+".eval", "w")
+    output_file = open(os.path.join(main_path,processed_file+".eval"), "w")
     output_file.write("TRUE POSITIVE = " + str(TruePositiveCounter) )
     output_file.write("\nTRUE NEGATIVE = " + str(TrueNegativeCounter) )
     output_file.write("\nFALSE POSITIVE = " + str(FalsePositiveCounter) )
