@@ -28,6 +28,8 @@ def crop_eyes(video):
     cap = cv2.VideoCapture(video)
 
     while cap.isOpened():
+        resized_left_eye_box=np.zeros((24,24))
+        resized_right_eye_box = np.zeros((24, 24))
         # Capture frame-by-frame
         ret, frame = cap.read()
 

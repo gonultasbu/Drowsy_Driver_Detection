@@ -47,7 +47,7 @@ def eval_func(dataset_file,processed_file):
     #print ('FALSE NEGATIVE')
     #print (FalseNegativeCounter)
 
-#print ('TPR = ' + TruePositiveCounter/(TrueNegativeCounter+FalseNegativeCounter+FalsePositiveCounter)) #TRUE POSITIVE RATE
+
 
     datasetFile.close()
     processedFile.close()
@@ -57,8 +57,7 @@ def eval_func(dataset_file,processed_file):
     output_file.write("\nFALSE POSITIVE = " + str(FalsePositiveCounter) )
     output_file.write("\nFALSE NEGATIVE = " + str(FalseNegativeCounter) )
     output_file.close()
-    print(output_file)
     quit()
 
 
-#eval_func('True_Evaluation.txt','Processed_Evaluation.txt')
+eval_func('sleepyCombinationLabel.txt','sleepyCombination.result')

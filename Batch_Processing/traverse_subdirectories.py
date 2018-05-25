@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 from video_processor import process_video
 from batch_evaluation import eval_func
@@ -16,7 +17,7 @@ def subdir_traverser_video(input_dir):
     file_count=0;
     for root, dirs, files in os.walk(input_dir, topdown=False):
         for name in files:
-            if (name.endswith("(1).avi")):
+            if (name.endswith(".avi")):
                 print(os.path.join(root, name))
                 process_video(os.path.join(root,name))
                 file_count=file_count+1;
@@ -42,4 +43,4 @@ def subdir_traverser_eval(input_dir):
 
 
 #GIVE THE DIRECTORY YOU WANT TO PROCESS AS INPUT
-subdir_traverser_video("C:\\Users\\Mert\\Dropbox\\ITU\\2017 BITIRME\\DATASETS")
+subdir_traverser_eval("C:\\Users\\Mert\\Dropbox\ITU\\2017 BITIRME\\DATASETS\\BIG_DATASET\\Training_Evaluation_Dataset\\Training Dataset\\001\\glasses")
