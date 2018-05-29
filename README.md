@@ -1,3 +1,13 @@
+# How to Use?
+
+-Dlib and OpenCV must be installed.
+
+-Run bitirme.py with Python 2.7, other files are related to data processing or old codes.
+
+-ddd_raspberry.py is the Raspberry Pi implementation of the bitirme.py code.
+
+-Eye cropper is a script for cropping eye regions from a video, useful for CNN implementations.
+
 # Drowsy Driver Detection for Motor Vehicles
 
 This project is created for ITU ECE Senior Design Project
@@ -6,33 +16,12 @@ This project is created for ITU ECE Senior Design Project
 
 * Assistant Professor Onur Ferhanoglu
 
-# Project Members
-
-- **040120074 Ismailcan Ozbek**
-  - Data Collection
-  - Mobile Implementation
-
-- **040110213 Aytac Aydin**
-  - Image Processing
-
-- **040140003 Burak Mert Gonultas**
-  - Image Processing
-  - Deep Learning
-  - Evaluation
-
-- **040120062 Onur Yilmaz**
-  - Mobile Implementation
-
 # Special Thanks to
 
 - Associate Professor Hazim Kemal Ekenel
 
-# Current Backlog
+# Donations
 
-- Code needs to be rewritten in C++ for Android development
-- Written code needs to be deployed on RPi, dlib is required.
-- More data is required, especially night recordings.
-- The project has been forked, an Android implementation (diagonal recording) + embedded Linux implementation (front-face).
-- Apparently, the "perfect" dataset uses a different measure than eyes. Need to work on that.
-- Data needs to be extracted and labeled for CNN.
-- Extract data method needs to embedded in the deep learning based solution.
+BTC Address: 17wZgxAuVHyN2esfMhwQK1ormpKXJuEwKC
+LTC Address: LNmZcdVGcxJVbyNB3DbzfGNeycRDHk9FiS
+ETH Address: 0x6179200d9b75d9b74666ebe517f1104f840ebbee
