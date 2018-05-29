@@ -23,5 +23,7 @@ This project is created for ITU ECE Senior Design Project
 # Donations
 
 BTC Address: 17wZgxAuVHyN2esfMhwQK1ormpKXJuEwKC
+
 LTC Address: LNmZcdVGcxJVbyNB3DbzfGNeycRDHk9FiS
+
 ETH Address: 0x6179200d9b75d9b74666ebe517f1104f840ebbee
