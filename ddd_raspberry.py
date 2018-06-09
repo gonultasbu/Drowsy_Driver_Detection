@@ -7,7 +7,7 @@ from imutils.video import VideoStream
 from imutils import face_utils
 import imutils
 from picamera.array import *            #picamera image data as an array
-from picamera import *          
+from picamera import *
 from threading import Thread
 import RPi.GPIO as GPIO
 # load cascades
@@ -64,7 +64,7 @@ class PiVideoStream:
 
     def stop(self):
         self.stopped = True
-        
+
 cap = PiVideoStream().start()
 cap.camera.rotation = 0
 cap.camera.hflip = False
@@ -73,11 +73,13 @@ time.sleep(2.0)
 
 blinkCounter = 0
 faceCounter = 0
+sample = []
+N = 600
 
 while 1==1:
     # Capture frame-by-frame
     frame = cap.read()
-    print (frame)
+
 
     if frame is not None:
         #frame = cv2.resize(frame, (360, 240))
@@ -86,22 +88,25 @@ while 1==1:
         faces = detector(grayFrame, 0)
 
         if len(faces) != 0: # face found
+           maxArea = 0
            faceCounter = 0
            # dlib_rect = dlib.rectangle(int(x), int(y), int(x + w), int(y + h))
            for k, d in enumerate(faces):
-               # convert dlib rectangle object to opencv coordinates
-               x = d.left()
-               y = d.top()
-               w = d.right() - x
-               h = d.bottom() - y
-
+               faceArea = (d.right() - d.left())*(d.bottom() - d.top())
+               if faceArea > maxArea:
+                   maxArea = faceArea
+                   x = d.left()
+                   y = d.top()
+                   w = d.right() - x
+                   h = d.bottom() - y
+                   maxRect = d
                #frame = cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 1) # put rectangle around face
                detected_landmarks = shape_predictor(frame, d).parts()  # detect landmarks
 
            landmarks = np.matrix([[p.x, p.y] for p in detected_landmarks])  # extract landmark coordinates
 
            leftH = ((landmarks[47][0, 1] - landmarks[43][0, 1]) + (landmarks[46][0, 1] - landmarks[44][0, 1]))   # left eye height
-           leftW = (landmarks[45][0, 0] - landmarks[42][0, 0])   # left eye width 
+           leftW = (landmarks[45][0, 0] - landmarks[42][0, 0])   # left eye width
            leftEAR = float(leftH) / (2 * leftW)   # left eye aspect ratio
 
            rightH = ((landmarks[41][0, 1] - landmarks[37][0, 1]) + (landmarks[40][0, 1] - landmarks[38][0, 1]))   # right eye height
@@ -110,21 +115,26 @@ while 1==1:
 
            EAR = (leftEAR+rightEAR)/2.0   # eye aspect ratio
 
-           if leftEAR < 0.25 or rightEAR < 0.25:  # either of the eyes is closed
+           if EAR > 0.2:
+                sample.append(EAR)
+           if len(sample) >= N:
+                del sample[:len(sample)/2] # delete the first half of sample
+           meanEAR = sum(sample)/float(len(sample))
+           TH = meanEAR*0.8
+
+
+           if leftEAR < TH or rightEAR < TH:  # either of the eyes is closed
                blinkCounter += 1
                cv2.putText(frame, 'EAR: {:.2}'.format(EAR), (grayFrame.shape[1]*8/10, grayFrame.shape[0]/10),
                    cv2.FONT_HERSHEY_COMPLEX, 0.5, color=(0, 0, 255), thickness=1)
-               
-
+               GPIO.output(18,GPIO.HIGH)
                if blinkCounter >= 2: # eyes are closed for more than 400 miliseconds
                    circleCenter = (grayFrame.shape[1]/10, grayFrame.shape[0]/10)
                    cv2.circle(frame, circleCenter, 20, color=(0, 0, 255), thickness = -1)
-                   GPIO.output(18,GPIO.HIGH)
+
                    #txtFile.write('1')
                    #winsound.Beep(FREQ, DURATION)
                else:
-                   #txtFile.write('0')
-                   
                    pass
            else:   # eyes are open
                blinkCounter = 0
@@ -132,6 +142,7 @@ while 1==1:
                cv2.putText(frame, 'EAR: {:.2f}'.format(EAR), (grayFrame.shape[1]*8/10, grayFrame.shape[0]/10),
                    cv2.FONT_HERSHEY_COMPLEX, 0.5, color=(255, 255, 0), thickness=1)
                GPIO.output(18,GPIO.LOW)
+
            for idx, point in enumerate(landmarks):
                if 35 < idx and idx < 48:
                    pos = (point[0, 0], point[0, 1])
