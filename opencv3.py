@@ -24,6 +24,11 @@ cap = cv2.VideoCapture('C:\\Users\\Itouch\\Desktop\\'+inputName+'.avi')
 blinkCounter = 0
 faceCounter = 0
 
+# create list to find average threshold value for eye openness
+sample = []
+
+N = 600   # max number of frames the list sample can have
+
 while cap.isOpened():
     # Capture frame-by-frame
     ret, frame = cap.read()
@@ -65,8 +70,16 @@ while cap.isOpened():
            rightEAR = float(rightH) / (2 * rightW)   # right eye aspect ratio
 
            EAR = (leftEAR+rightEAR)/2.0   # eye aspect ratio
+            
+           if EAR > 0.2:
+                sample.append(EAR)
+           if len(sample) >= N:
+                del sample[:len(sample)/2] # delete the first half of sample       
+           meanEAR = sum(sample)/float(len(sample))
+           TH = meanEAR*0.8  
+             
 
-           if leftEAR < 0.25 or rightEAR < 0.25:  # either of the eyes is closed
+           if leftEAR < TH or rightEAR < TH:  # either of the eyes is closed
                blinkCounter += 1
                cv2.putText(frame, 'EAR: {:.2}'.format(EAR), (grayFrame.shape[1]*8/10, grayFrame.shape[0]/10),
                    cv2.FONT_HERSHEY_COMPLEX, 0.5, color=(0, 0, 255), thickness=1)
