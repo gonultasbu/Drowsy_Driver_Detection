@@ -9,7 +9,10 @@ import imutils
 from picamera.array import *            #picamera image data as an array
 from picamera import *          
 from threading import Thread
+import RPi.GPIO as GPIO
 # load cascades
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(18,GPIO.OUT)
 detector = dlib.get_frontal_face_detector()
 shape_predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 
@@ -23,7 +26,7 @@ shape_predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
 # ('C:\\Users\\Itouch\\Desktop\\burakDrive1.avi')
 # set counters to measure number of frames
 class PiVideoStream:
-    def __init__(self, resolution=(320, 240), framerate=30, rotation=0, hflip=False, vflip=False):
+    def __init__(self, resolution=(360, 240), framerate=15, rotation=0, hflip=False, vflip=False):
         # initialize the camera and stream
         self.camera = PiCamera()
         self.camera.resolution = resolution
@@ -77,7 +80,7 @@ while 1==1:
     print (frame)
 
     if frame is not None:
-        frame = cv2.resize(frame, (360, 240))
+        #frame = cv2.resize(frame, (360, 240))
         grayFrame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) # convert to grayscale
         # face detection
         faces = detector(grayFrame, 0)
@@ -111,21 +114,24 @@ while 1==1:
                blinkCounter += 1
                cv2.putText(frame, 'EAR: {:.2}'.format(EAR), (grayFrame.shape[1]*8/10, grayFrame.shape[0]/10),
                    cv2.FONT_HERSHEY_COMPLEX, 0.5, color=(0, 0, 255), thickness=1)
+               
 
-               if blinkCounter >= 12: # eyes are closed for more than 400 miliseconds
+               if blinkCounter >= 2: # eyes are closed for more than 400 miliseconds
                    circleCenter = (grayFrame.shape[1]/10, grayFrame.shape[0]/10)
                    cv2.circle(frame, circleCenter, 20, color=(0, 0, 255), thickness = -1)
+                   GPIO.output(18,GPIO.HIGH)
                    #txtFile.write('1')
                    #winsound.Beep(FREQ, DURATION)
                else:
                    #txtFile.write('0')
+                   
                    pass
            else:   # eyes are open
                blinkCounter = 0
                #txtFile.write('0')
                cv2.putText(frame, 'EAR: {:.2f}'.format(EAR), (grayFrame.shape[1]*8/10, grayFrame.shape[0]/10),
                    cv2.FONT_HERSHEY_COMPLEX, 0.5, color=(255, 255, 0), thickness=1)
-
+               GPIO.output(18,GPIO.LOW)
            for idx, point in enumerate(landmarks):
                if 35 < idx and idx < 48:
                    pos = (point[0, 0], point[0, 1])
@@ -136,10 +142,11 @@ while 1==1:
         else: # face not found
            faceCounter += 1
            #txtFile.write('0')
-           if faceCounter >= 60:   # face not found more than 2 seconds
+           if faceCounter >= 20:   # face not found more than 2 seconds
                #txtFile.write('1')
                cv2.putText(frame, 'Watch the Road !', (grayFrame.shape[1]/15, grayFrame.shape[0]*9/10),
                    cv2.FONT_HERSHEY_COMPLEX, 0.5, color=(0, 0, 255), thickness=1)
+               GPIO.output(18,GPIO.HIGH)
 
 
         #out.write(frame)
